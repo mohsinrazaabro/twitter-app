@@ -24,6 +24,11 @@ db.once("open", () => {
 app.use(express.json())
 
 
+if(process.env.NODE_ENV === "production"){
+    app.use(express.static(__dirname + '/public/'))
+
+    app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'))
+}
 
 //routes
 const usersRoutes = require("./api/routes/users");
