@@ -23,7 +23,7 @@ db.once("open", () => {
 
 app.use(express.json())
 
-
+app.use(express.static('public'))
 if(process.env.NODE_ENV === "production"){
     app.use(express.static(__dirname + '/public/'))
 
