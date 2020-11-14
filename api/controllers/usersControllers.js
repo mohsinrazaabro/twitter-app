@@ -53,6 +53,7 @@ const makeToken = async (req, res) => {
 
 const findUsers = async (req, res) => {
     const Users = await user.find()
+    
     const Followings = await following.find({username:req.authData.name})
     const newFollowings = Followings.map((following) => following.following)
     const newUsers = Users.map((user) => user.name).filter((name) => name!==req.authData.name)
