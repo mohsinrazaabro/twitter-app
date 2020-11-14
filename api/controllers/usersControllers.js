@@ -70,7 +70,7 @@ const findUsers = async (req, res) => {
         }
     })
     
-    res.json(newResponse)
+    res.json({newResponse})
 }
 
 const checkToken = async (req, res) => {

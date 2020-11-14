@@ -25,7 +25,7 @@ const getTweetsOfOne = async (req, res) => {
     try {
         let page = parseInt(req.query.page)
         const tweetsOfOne = await tweet.find({username:req.params.username}).sort({time:-1}).limit(5).skip(page)
-        res.json(tweetsOfOne)
+        res.json({tweetsOfOne})
     } catch(e){ res.send(e)}
 }
 
@@ -33,7 +33,7 @@ const getTweetsOfMine = async (req, res) => {
     try {
         let page = parseInt(req.query.page)
         const tweetsOfOne = await tweet.find({username:req.authData.name}).sort({time:-1}).limit(5).skip(page)
-        res.json(tweetsOfOne)
+        res.json({tweetsOfOne})
     } catch(e){ res.send(e)}
 }
 
@@ -45,7 +45,7 @@ const getTweetsOfMany = async (req, res) => {
         const allFollowings = Followings.map((name) => name.following)
         const tweetsOfMany = await tweet.find({username: allFollowings}).sort({time:-1}).limit(5).skip(page)
      
-        res.json(tweetsOfMany)
+        res.json({tweetsOfMany})
 
 }
 
