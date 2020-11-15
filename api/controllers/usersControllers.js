@@ -40,7 +40,7 @@ const makeToken = async (req, res) => {
     try {
         if(await bcrypt.compare(req.body.password, User.password)){
             const token = jwt.sign({name: User.name}, process.env.SECRET_JWT_KEY,{
-                expiresIn: "1h"
+                expiresIn: "30d"
             })
             res.json({token, name: User.name})
         } else{
