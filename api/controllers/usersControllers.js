@@ -42,7 +42,7 @@ const makeToken = async (req, res) => {
             const token = jwt.sign({name: User.name}, process.env.SECRET_JWT_KEY,{
                 expiresIn: "1h"
             })
-            res.json({token, name})
+            res.json({token, name: User.name})
         } else{
             res.json({message: "Password didnt match"})
         }
